@@ -25,8 +25,8 @@ class BasePage {
         await el.click()
     }
 
-    async clickByCSS(css) {
-        let el = await driver.findElement(By.css(css))
+    async clickBySelector(selector) {
+        let el = await driver.findElement(By.css(selector))
         await el.click()
     }
 
@@ -38,12 +38,24 @@ class BasePage {
         await driver.wait(until.elementLocated(By.xpath(xpath)), timeout)
     }
 
-    async waitUntilExistsByCSS(css, timeout) {
-        await driver.wait(until.elementLocated(By.css(css)), timeout)
+    async waitUntilExistsBySelector(selector, timeout) {
+        await driver.wait(until.elementLocated(By.css(selector)), timeout)
     }
 
     async waitUntilHiddenByXpath(xpath, timeout) {
         await driver.wait(until.elementIsNotVisible(await this.findElementByXpath(xpath)), timeout)
+    }
+
+    async waitUntillElementRemovedById(id, timeout) {
+        await driver.wait(until.stalenessOf(await this.findElementById(id)), timeout)
+    }
+
+    async waitUntillElementRemovedByXpath(xpath, timeout) {
+        await driver.wait(until.stalenessOf(await this.findElementByXpath(xpath)), timeout)
+    }
+
+    async waitUntillElementRemovedBySelector(selector, timeout) {
+        await driver.wait(until.stalenessOf(await this.findElementBySelector(selector)), timeout)
     }
 
     async findElementById(id) {
@@ -54,8 +66,8 @@ class BasePage {
         return await driver.findElement(By.xpath(xpath))
     }
 
-    async findElementByCSS(css) {
-        return await driver.findElement(By.css(css))
+    async findElementBySelector(selector) {
+        return await driver.findElement(By.css(selector))
     }
 
     async findElementsById(id) {
@@ -66,8 +78,8 @@ class BasePage {
         return await driver.findElements(By.xpath(xpath))
     }
 
-    async findElementsByCSS(css) {
-        return await driver.findElements(By.css(css))
+    async findElementsBySelector(selector) {
+        return await driver.findElements(By.css(selector))
     }
 
     async fillById(id, content) {
@@ -84,8 +96,8 @@ class BasePage {
         }
     }
 
-    async fillByCSS(css, content) {
-        let el = await this.findElementByCSS(css)
+    async fillBySelector(selector, content) {
+        let el = await this.findElementBySelector(selector)
         if (el) {
             await el.sendKeys(content)
         }

@@ -20,7 +20,16 @@ describe("QA for Index page", () => {
     it("Auto-submit search form", async () => {
         await page.fillById("search-keyword", "CR90 corvette")
         await page.wait(5000)
-        let results = await page.findElementsByCSS('.starship-col')
+        let results = await page.findElementsBySelector('.starship-col')
+        assert.equal(results.length, 1)
+    })
+
+    it("Search with button", async () => {
+        await page.fillById("search-keyword", "CR90 corvette")
+        await page.wait(5000)
+        await page.clickById("search")
+        await page.wait(5000)
+        let results = await page.findElementsBySelector('.starship-col')
         assert.equal(results.length, 1)
     })
 })
