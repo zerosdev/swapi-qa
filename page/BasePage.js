@@ -85,6 +85,7 @@ class BasePage {
     async fillById(id, content) {
         let el = await this.findElementById(id)
         if (el) {
+            await el.clear()
             await el.sendKeys(content)
         }
     }
@@ -92,6 +93,7 @@ class BasePage {
     async fillByXpath(xpath, content) {
         let el = await this.findElementByXpath(xpath)
         if (el) {
+            await el.clear()
             await el.sendKeys(content)
         }
     }
@@ -99,6 +101,7 @@ class BasePage {
     async fillBySelector(selector, content) {
         let el = await this.findElementBySelector(selector)
         if (el) {
+            await el.clear()
             await el.sendKeys(content)
         }
     }
