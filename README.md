@@ -1,5 +1,5 @@
 # SWAPI Quality Assurance
-Automated QA with Selenium, Mocha & Chai
+The example of Automated QA with Selenium, Mocha & Chai
 
 ## Installation
 

@@ -1,7 +1,7 @@
 {
   "name": "swapi-qa",
   "version": "1.0.0",
-  "description": "Automated QA with Selenium, Mocha & Chai",
+  "description": "The example of Automated QA with Selenium, Mocha & Chai",
   "scripts": {
     "test": "mocha --timeout 60000"
   },
